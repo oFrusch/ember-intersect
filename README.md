@@ -25,7 +25,7 @@ npm install ember-intersect
 ## Usage
 
 This addon provides an `IntersectionElement` component that can be rendered anyone in your application.
-The `IntersectionElement` component accepts one prop, `onIntersect`, which is a callback function that will
+The `IntersectionElement` component accepts a prop, `onIntersect`, which is a callback function that will
 be called when the element comes into view. 
 
 Example usage:
@@ -41,6 +41,18 @@ Example usage:
     <IntersectionElement @onIntersect={{this.loadMoreItems}}>
 </div>
 ```
+
+### Available Arguments
+#### `onIntersect`
+Callback function invoked when the element enters the viewport. Read more about the [Javascript Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
+#### `onInsert`
+Callback function invoked when the element is initially rendered.
+
+
+#### `onDestroy`
+Callback function invoked when the element is removed from the viewport.
+
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.

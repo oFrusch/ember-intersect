@@ -6,6 +6,8 @@ import { action } from '@ember/object';
 /**
  * @typedef {Object} IntersectionElementArgs
  * @property {Function} onIntersect
+ * @property {Function} onInsert
+ * @property {Function} onDestroy
  */
 export default class IntersectionElement extends Component {
   /** @type {IntersectionObserver} */
@@ -28,10 +30,14 @@ export default class IntersectionElement extends Component {
     });
 
     this.observer.observe(element);
+
+    this.args.onInsert?.(this.observer)
   }
 
   @action
   removeIntersectionObserver(element) {
+    this.args.onDestroy?.(this.observer)
+
     this.observer.unobserve(element);
   }
 
