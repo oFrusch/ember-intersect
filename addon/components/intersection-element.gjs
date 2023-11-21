@@ -28,8 +28,6 @@ export default class IntersectionElement extends Component {
     });
 
     this.observer.observe(element);
-
-    return this.observer;
   }
 
   @action
