@@ -32,7 +32,7 @@ export default class IntersectionElement extends Component {
 
   @action
   removeIntersectionObserver(element) {
-    this.observers.unobserve(element);
+    this.observer.unobserve(element);
   }
 
   <template>
