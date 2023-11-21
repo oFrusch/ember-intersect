@@ -1,7 +1,7 @@
 {
   "name": "ember-intersect",
   "version": "1.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Simple Javascript IntersectionObserver implementation for Ember applications.",
   "keywords": [
     "ember-addon"
   ],
