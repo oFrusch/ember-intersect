@@ -1,15 +1,17 @@
 {
   "name": "ember-intersect",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oFrusch/ember-intersect.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "oFrusch",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -85,5 +87,10 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "main": "index.js",
+  "bugs": {
+    "url": "https://github.com/oFrusch/ember-intersect/issues"
+  },
+  "homepage": "https://github.com/oFrusch/ember-intersect#readme"
 }
