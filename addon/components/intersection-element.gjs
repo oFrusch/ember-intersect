@@ -1,7 +1,18 @@
-import didInsert from '@ember/render-modifiers/modifiers/did-insert';
-import willDestroy from '@ember/render-modifiers/modifiers/will-destroy';
-import Component from '@glimmer/component';
-import { action } from '@ember/object';
+import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
+import Component from "@glimmer/component";
+import { action } from "@ember/object";
+
+function debounce(func, delay) {
+  let debounceTimer;
+
+  return function (...args) {
+    const context = this;
+
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => func.apply(context, args), delay);
+  };
+}
 
 /**
  * @typedef {Object} IntersectionElementArgs
@@ -17,7 +28,7 @@ export default class IntersectionElement extends Component {
     super(...arguments);
 
     if (!this.args.onIntersect) {
-      throw new Error('IntersectionElement requires an `onIntersect` argument');
+      throw new Error("IntersectionElement requires an `onIntersect` argument");
     }
   }
 
@@ -26,17 +37,17 @@ export default class IntersectionElement extends Component {
     this.observer = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) return;
 
-      this.args.onIntersect?.();
+      debounce(() => this.args.onIntersect?.(), 300);
     });
 
     this.observer.observe(element);
 
-    this.args.onInsert?.(this.observer)
+    this.args.onInsert?.(this.observer);
   }
 
   @action
   removeIntersectionObserver(element) {
-    this.args.onDestroy?.(this.observer)
+    this.args.onDestroy?.(this.observer);
 
     this.observer.unobserve(element);
   }
